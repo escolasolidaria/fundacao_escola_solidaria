@@ -33,6 +33,9 @@
             border-radius: 4px;
             border: 1px solid #ccc;
         }
+        .form-container input:invalid {
+            border-color: red;
+        }
         .form-container button {
             background-color: #268ef0;
             color: #fff;
@@ -134,72 +137,72 @@
 <body>
     <div class="form-container" id="form-content">
         <h2>Ficha de Pré-Matrícula do Aluno</h2>
-        <form id="fichaForm">
+        <form id="fichaForm" novalidate>
             <h3>Informações Pessoais do Aluno</h3>
             <div style="position: relative;">
-                <input type="text" name="nomeAluno" placeholder="Nome Completo" required style="display: inline-block; width: 75%;">
-                <img id="previewFotoAluno" class="foto-aluno" style="display:none; width: 100px; height: 100px;">
+                <input type="text" name="nomeAluno" placeholder="Nome Completo" required style="display: inline-block; width: 75%;" aria-label="Nome Completo">
+                <img id="previewFotoAluno" class="foto-aluno" style="display:none; width: 100px; height: 100px;" alt="Pré-visualização da foto do aluno">
             </div>
-            <input type="file" id="fotoAluno" name="fotoAluno" accept="image/*" style="display: inline-block; width: 90%;" onchange="previewImage('fotoAluno', 'previewFotoAluno')">
-            <input type="date" name="dataNascimento" placeholder="Data de Nascimento" required>
-            <select name="nacionalidade" required>
+            <input type="file" id="fotoAluno" name="fotoAluno" accept="image/*" style="display: inline-block; width: 90%;" onchange="previewImage('fotoAluno', 'previewFotoAluno')" aria-label="Foto do aluno">
+            <input type="date" name="dataNascimento" placeholder="Data de Nascimento" required aria-label="Data de Nascimento">
+            <select name="nacionalidade" required aria-label="Nacionalidade">
                 <option value="">Nacionalidade</option>
                 <option value="brasileiro">Brasileiro</option>
                 <option value="estrangeiro">Estrangeiro</option>
             </select>
-            <input type="text" name="naturalidade" placeholder="Naturalidade (cidade e estado)" required>
-            <select name="genero" required>
+            <input type="text" name="naturalidade" placeholder="Naturalidade (cidade e estado)" required aria-label="Naturalidade">
+            <select name="genero" required aria-label="Gênero">
                 <option value="">Gênero</option>
                 <option value="masculino">Masculino</option>
                 <option value="feminino">Feminino</option>
                 <option value="outro">Outro</option>
             </select>
-            <input type="text" id="cep" name="cep" placeholder="CEP" required onblur="buscarCep()">
-            <input type="text" id="logradouro" name="logradouro" placeholder="Logradouro" required>
-            <input type="text" id="numero" name="numero" placeholder="Número" required>
-            <input type="text" id="complemento" name="complemento" placeholder="Complemento">
-            <input type="text" id="bairro" name="bairro" placeholder="Bairro" required>
-            <input type="text" id="cidade" name="cidade" placeholder="Cidade" required>
-            <input type="text" id="uf" name="uf" placeholder="Estado" required>
-            <input type="tel" name="telefone" placeholder="Telefones de Contato" required>
-            <input type="email" name="email" placeholder="E-mail" required>
-            <input type="text" name="rg" placeholder="Número de Registro Geral (RG)" required>
-            <input type="text" name="cpf" placeholder="CPF (se aplicável)">
-            <input type="text" name="certidao" placeholder="Número da Certidão de Nascimento ou Casamento" required>
-            <input type="text" name="raca" placeholder="Raça/Cor (opcional)">
+            <input type="text" id="cep" name="cep" placeholder="CEP" required onblur="buscarCep()" aria-label="CEP">
+            <input type="text" id="logradouro" name="logradouro" placeholder="Logradouro" required aria-label="Logradouro">
+            <input type="text" id="numero" name="numero" placeholder="Número" required aria-label="Número">
+            <input type="text" id="complemento" name="complemento" placeholder="Complemento" aria-label="Complemento">
+            <input type="text" id="bairro" name="bairro" placeholder="Bairro" required aria-label="Bairro">
+            <input type="text" id="cidade" name="cidade" placeholder="Cidade" required aria-label="Cidade">
+            <input type="text" id="uf" name="uf" placeholder="Estado" required aria-label="Estado">
+            <input type="tel" name="telefone" placeholder="Telefones de Contato" required aria-label="Telefone de Contato">
+            <input type="email" name="email" placeholder="E-mail" required aria-label="E-mail">
+            <input type="text" name="rg" placeholder="Número de Registro Geral (RG)" required aria-label="RG">
+            <input type="text" name="cpf" placeholder="CPF (se aplicável)" aria-label="CPF">
+            <input type="text" name="certidao" placeholder="Número da Certidão de Nascimento ou Casamento" required aria-label="Certidão">
+            <input type="text" name="raca" placeholder="Raça/Cor (opcional)" aria-label="Raça/Cor">
 
             <h3>Necessidades Especiais</h3>
             <label>Possui necessidades especiais?</label>
-            <select id="necessidadeSelect" onchange="toggleNecessidadeInput()">
+            <select id="necessidadeSelect" onchange="toggleNecessidadeInput()" aria-label="Possui necessidades especiais?">
                 <option value="">Selecione</option>
                 <option value="sim">Sim</option>
                 <option value="nao">Não</option>
             </select>
             <div id="necessidadeInput" class="necessidades-especiais">
-                <input type="text" name="especificacaoNecessidade" placeholder="Especifique quais necessidades especiais">
+                <input type="text" name="especificacaoNecessidade" placeholder="Especifique quais necessidades especiais" aria-label="Especifique necessidades especiais">
             </div>
 
             <h3>Filiação</h3>
-            <input type="text" name="nomePai" placeholder="Nome do Pai">
-            <input type="text" name="nomeMae" placeholder="Nome da Mãe">
+            <input type="text" name="nomePai" placeholder="Nome do Pai" aria-label="Nome do Pai">
+            <input type="text" name="nomeMae" placeholder="Nome da Mãe" aria-label="Nome da Mãe">
 
             <h3>Responsável pela ficha do aluno</h3>
-            <input type="text" name="nomeResponsavel" placeholder="Nome Completo do Responsável" required>
-            <input type="text" name="rgResponsavel" placeholder="RG do Responsável" required>
-            <input type="text" name="cpfResponsavel" placeholder="CPF do Responsável" required>
-            <input type="text" id="cepResponsavel" name="cepResponsavel" placeholder="CEP" required onblur="buscarCepResponsavel()">
-            <input type="text" id="logradouroResponsavel" name="logradouroResponsavel" placeholder="Logradouro" required>
-            <input type="text" id="numeroResponsavel" name="numeroResponsavel" placeholder="Número">
-            <input type="text" id="complementoResponsavel" name="complementoResponsavel" placeholder="Complemento">
-            <input type="text" id="bairroResponsavel" name="bairroResponsavel" placeholder="Bairro" required>
-            <input type="text" id="cidadeResponsavel" name="cidadeResponsavel" placeholder="Cidade" required>
-            <input type="text" id="ufResponsavel" name="ufResponsavel" placeholder="Estado" required>
-            <input type="tel" name="telefoneResponsavel" placeholder="Telefones de Contato do Responsável" required>
-            <input type="text" name="profissaoResponsavel" placeholder="Profissão do Responsável" required>
-            <input type="email" name="emailResponsavel" placeholder="E-mail do Responsável" required>
+            <input type="text" name="nomeResponsavel" placeholder="Nome Completo do Responsável" required aria-label="Nome do Responsável">
+            <input type="text" name="rgResponsavel" placeholder="RG do Responsável" required aria-label="RG do Responsável">
+            <input type="text" name="cpfResponsavel" placeholder="CPF do Responsável" required aria-label="CPF do Responsável">
+            <input type="text" id="cepResponsavel" name="cepResponsavel" placeholder="CEP" required onblur="buscarCepResponsavel()" aria-label="CEP do Responsável">
+            <input type="text" id="logradouroResponsavel" name="logradouroResponsavel" placeholder="Logradouro" required aria-label="Logradouro do Responsável">
+            <input type="text" id="numeroResponsavel" name="numeroResponsavel" placeholder="Número" aria-label="Número do Responsável">
+            <input type="text" id="complementoResponsavel" name="complementoResponsavel" placeholder="Complemento" aria-label="Complemento do Responsável">
+            <input type="text" id="bairroResponsavel" name="bairroResponsavel" placeholder="Bairro" required aria-label="Bairro do Responsável">
+            <input type="text" id="cidadeResponsavel" name="cidadeResponsavel" placeholder="Cidade" required aria-label="Cidade do Responsável">
+            <input type="text" id="ufResponsavel" name="ufResponsavel" placeholder="Estado" required aria-label="Estado do Responsável">
+            <input type="tel" name="telefoneResponsavel" placeholder="Telefones de Contato do Responsável" required aria-label="Telefone do Responsável">
+            <input type="text" name="profissaoResponsavel" placeholder="Profissão do Responsável" required aria-label="Profissão do Responsável">
+            <input type="email" name="emailResponsavel" placeholder="E-mail do Responsável" required aria-label="E-mail do Responsável">
 
             <h3>Quem irá buscar e levar o aluno</h3>
-            <select id="quemBuscarLevar" onchange="toggleOutrosDados()">
+            <select id="quemBuscarLevar" onchange="toggleOutrosDados()" aria-label="Quem irá buscar e levar o aluno?">
                 <option value="">Selecione</option>
                 <option value="pai">Pai</option>
                 <option value="mae">Mãe</option>
@@ -207,28 +210,28 @@
             </select>
             <div id="outrosDados" class="outros-dados">
                 <div style="position: relative;">
-                    <input type="text" name="nomeOutros" placeholder="Nome Completo">
-                    <img id="previewFotoOutros" class="foto-outros" style="display:none; width: 100px; height: 100px;">
+                    <input type="text" name="nomeOutros" placeholder="Nome Completo" aria-label="Nome Completo de outra pessoa">
+                    <img id="previewFotoOutros" class="foto-outros" style="display:none; width: 100px; height: 100px;" alt="Pré-visualização da foto de outra pessoa">
                 </div>
-                <input type="file" id="fotoOutros" name="fotoOutros" accept="image/*" style="display: inline-block; width: 90%;" onchange="previewImage('fotoOutros', 'previewFotoOutros')">
-                <input type="text" name="rgOutros" placeholder="RG">
-                <input type="text" name="cpfOutros" placeholder="CPF">
-                <input type="tel" name="telefoneOutros" placeholder="Telefone de Contato">
-                <input type="email" name="emailOutros" placeholder="E-mail">
+                <input type="file" id="fotoOutros" name="fotoOutros" accept="image/*" style="display: inline-block; width: 90%;" onchange="previewImage('fotoOutros', 'previewFotoOutros')" aria-label="Foto de outra pessoa">
+                <input type="text" name="rgOutros" placeholder="RG" aria-label="RG de outra pessoa">
+                <input type="text" name="cpfOutros" placeholder="CPF" aria-label="CPF de outra pessoa">
+                <input type="tel" name="telefoneOutros" placeholder="Telefone de Contato" aria-label="Telefone de contato de outra pessoa">
+                <input type="email" name="emailOutros" placeholder="E-mail" aria-label="E-mail de outra pessoa">
             </div>
 
             <h3>Informações sobre Saúde</h3>
-            <textarea name="infoMedicas" placeholder="Informações Médicas Relevantes (alergias, medicamentos em uso, condições médicas específicas)" required></textarea>
-            <input type="text" name="planoSaude" placeholder="Nome do Plano de Saúde (se aplicável)">
-            <input type="text" name="contatoEmergencia" placeholder="Nome e Contato de Emergência" required>
+            <textarea name="infoMedicas" placeholder="Informações Médicas Relevantes (alergias, medicamentos em uso, condições médicas específicas)" required aria-label="Informações Médicas"></textarea>
+            <input type="text" name="planoSaude" placeholder="Nome do Plano de Saúde (se aplicável)" aria-label="Plano de Saúde">
+            <input type="text" name="contatoEmergencia" placeholder="Nome e Contato de Emergência" required aria-label="Contato de Emergência">
 
             <h3>Informações Socioeconômicas (opcional)</h3>
-            <input type="text" name="rendaFamiliar" placeholder="Renda Familiar">
-            <textarea name="composicaoFamiliar" placeholder="Composição Familiar"></textarea>
-            <input type="text" name="beneficiosSociais" placeholder="Benefícios Sociais (Bolsa Família, etc.)">
+            <input type="text" name="rendaFamiliar" placeholder="Renda Familiar" aria-label="Renda Familiar">
+            <textarea name="composicaoFamiliar" placeholder="Composição Familiar" aria-label="Composição Familiar"></textarea>
+            <input type="text" name="beneficiosSociais" placeholder="Benefícios Sociais (Bolsa Família, etc.)" aria-label="Benefícios Sociais">
 
             <div class="consentimento">
-                <input type="checkbox" name="termos" required>
+                <input type="checkbox" name="termos" required aria-label="Aceito os termos e condições">
                 <label>
                     Li e concordo com os <a href="#" onclick="abrirModal()">termos e condições</a>.
                 </label>
@@ -237,9 +240,9 @@
         </form>
     </div>
 
-    <div id="modalTermos" class="modal">
+    <div id="modalTermos" class="modal" aria-hidden="true" role="dialog">
         <div class="modal-content">
-            <span class="close" onclick="fecharModal()">&times;</span>
+            <span class="close" onclick="fecharModal()" aria-label="Fechar">&times;</span>
             <h2>TERMO DE CONDIÇÕES E TRATAMENTO DE DADOS PESSOAIS</h2>
             <p>
                 Ao preencher a presente ficha, declaro que as informações pessoais fornecidas, incluindo, mas não se limitando a, nome, endereço, telefone, e-mail, dados acadêmicos e qualquer outra informação solicitada, são verdadeiras, completas e precisas. Compreendo que esses dados serão coletados e tratados pela [Nome da Escola] em conformidade com a Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018 - LGPD), e que serão utilizados exclusivamente para fins educacionais e administrativos, como registro acadêmico, comunicação com os responsáveis, e acompanhamento do desempenho escolar dos alunos, entre outras finalidades relacionadas ao processo educacional.
@@ -282,6 +285,8 @@
                         }
                     })
                     .catch(error => alert('Erro ao buscar o CEP'));
+            } else {
+                alert('Por favor, insira um CEP válido com 8 dígitos.');
             }
         }
 
@@ -301,6 +306,8 @@
                         }
                     })
                     .catch(error => alert('Erro ao buscar o CEP'));
+            } else {
+                alert('Por favor, insira um CEP válido com 8 dígitos.');
             }
         }
 
@@ -310,10 +317,12 @@
 
         function abrirModal() {
             document.getElementById('modalTermos').style.display = "block";
+            document.getElementById('modalTermos').setAttribute('aria-hidden', "false");
         }
 
         function fecharModal() {
             document.getElementById('modalTermos').style.display = "none";
+            document.getElementById('modalTermos').setAttribute('aria-hidden', "true");
         }
 
         function toggleNecessidadeInput() {
@@ -355,6 +364,7 @@
             var modal = document.getElementById('modalTermos');
             if (event.target == modal) {
                 modal.style.display = "none";
+                modal.setAttribute('aria-hidden', "true");
             }
         }
     </script>
